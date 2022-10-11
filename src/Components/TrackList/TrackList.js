@@ -11,13 +11,20 @@ import Track from '../Track/Track';
 
     render(){
         
-        return (<div className="TrackList">
-                    <Track />
-                    <Track />
-                    <Track />
-                </div>)
+        return (
+                <div className="TrackList">
+                    {
+                        this.props.tracks.map( track => {
+                        return <Track track={track} key={track.id} />
+                        })
+                    }
+                    {/* <p>{this.props?.tracks?.length}</p> */}
+                </div>
+            )
 
     }
 }
 
 export default TrackList;
+
+
