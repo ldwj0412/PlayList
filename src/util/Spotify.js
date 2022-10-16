@@ -75,7 +75,7 @@ const Spotify={
                 return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
                     headers:  headers,
                     method: 'POST',
-                    body: JSON.stringify({anme: name})
+                    body: JSON.stringify({name: name})
                     
                 })
                 .then(response =>  response.json())
@@ -98,5 +98,6 @@ const Spotify={
 
 
 }
+
 
 export default Spotify;
