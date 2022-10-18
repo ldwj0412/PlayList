@@ -1,11 +1,16 @@
+import Cookies from 'js-cookie';
+
 let  accessToken;
 const clientID = '946b484a6c524a8ea21f31c770448e5c';
 const redirectURI = 'http://localhost:3000/';
 
+
 const Spotify={
 
     getAccessToken(){
-        
+
+        accessToken = Cookies.get('accessToken');
+
         if(accessToken){
             
             return accessToken;
@@ -15,16 +20,24 @@ const Spotify={
         const expireInMatch = window.location.href.match(/expires_in=([^&]*)/);
        
         if(accessTokenMatch && expireInMatch){
+            alert("if called");
             accessToken = accessTokenMatch[1];
             const expiresIn = Number(expireInMatch[1]);
-
+                   
+            Cookies.set('accessToken', accessToken, {expires: (expiresIn/3600)/24 });
             window.setTimeout(() => accessToken = '', expiresIn * 1000);
+          
             window.history.pushState('Access Token', null, '/');
             return accessToken;
-
+            
+            
         }else{
+
+            alert("else called");
             const accessURI = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
             window.location = accessURI;
+
+            
         }
 
     },
