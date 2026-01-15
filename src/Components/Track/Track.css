@@ -3,7 +3,13 @@
     align-items: center;
     border-bottom: 1px solid rgba(256, 256, 256, 0.8);
   }
-  
+
+  .Track-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
   .Track-action {
     cursor: pointer;
     padding: .5rem;
@@ -13,11 +19,32 @@
     background-color: rgba(0, 0, 0, 0);
     color: #fff;
   }
-  
+
   .Track-action:hover {
     color: rgba(265, 265, 265, .5);
   }
-  
+
+  .Track-preview {
+    cursor: pointer;
+    padding: .45rem .65rem;
+    font-size: .75rem;
+    border-radius: 16px;
+    border: 1px solid rgba(256, 256, 256, 0.5);
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    transition: border-color .25s, color .25s, opacity .25s;
+  }
+
+  .Track-preview:hover {
+    border-color: rgba(265, 265, 265, .75);
+    color: rgba(265, 265, 265, .75);
+  }
+
+  .Track-preview:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
   .Track-information {
     flex-grow: 1;
     display: flex;
